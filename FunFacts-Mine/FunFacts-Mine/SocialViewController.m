@@ -14,6 +14,16 @@
 #define AuthorNameKey       @"name"
 #define AuthorTwitterKey    @"twitter"
 
+// add an enumerator declaration
+// enumerator is used so you can easily check for tags of the buttons without having to use numbers that may not make much sense or provide clarity as to which button you're working with
+typedef enum SocialButtonTags
+{
+    SocialButtonTagFacebook,
+    SocialButtonTagSinaWeibo,
+    SocialButtonTagTwitter
+} SocialButtonTags;
+
+
 @interface SocialViewController ()
 {
   
@@ -96,7 +106,84 @@
 
 -(IBAction)socialTapped:(id)sender
 {
+    if(self.deviceWasShaken)
+    {
+        // 1 - creats an empty string to store the service type to be used for sharing. this string will be filled out shortly 
+        NSString *serviceType = @"";
+        
+        // 2 - switch statement based on the button's tag.
+        //      notice that the sender object is cast to a UIButton in order to retrieve its tag. It's perfectly legal, since you know the sender is definitely a button. Depending on the button's tag, appropriate service type is assigned ot the string.
+        //  notice that the enumerator is much more verbose than using the 0, 1, and 2 for tags
+        switch (((UIButton *)sender).tag)
+        {
+            case SocialButtonTagFacebook:
+                serviceType = SLServiceTypeFacebook;
+                break;
+            case SocialButtonTagSinaWeibo:
+                serviceType = SLServiceTypeSinaWeibo;
+                break;
+            case SocialButtonTagTwitter:
+                serviceType = SLServiceTypeTwitter;
+                break;
+            
+            default:
+                break;
+        }
+        
+        // 3 with the service type string acquired, the code checks to see if the service is avialable to the user.
+        // the main reason it may not be avialable is if an account for the service hasn't been set up via the Settings app.
+        if (![SLComposeViewController isAvailableForServiceType:serviceType])
+        {
+            // 4
+            [self showUnavailableAlertForServiceType:serviceType];
+            
+        } else {
+            // 5 - nice- the enumerator helped select the service type
+            SLComposeViewController *composeViewController = [SLComposeViewController composeViewControllerForServiceType:serviceType];
+            // add the author's image
+            [composeViewController addImage:self.authorImageView.image];
+            // add the initial text string
+            NSString *initialTextString = [NSString stringWithFormat:@"Fun Fact: %@", self.factTextView.text];
+            
+            [composeViewController setInitialText:initialTextString];
+            
+            [self presentViewController:composeViewController animated:YES completion:nil];
+        
+        }
+    }
     
+    else
+    {
+        // 6
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Shake"
+                                                            message:@"Before you can share, please shake the device in order to get a random Fun Fact"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Dismiss"
+                                                  otherButtonTitles: nil];
+        
+        [alertView show];
+    }
+}
+
+#pragma mark - Custom Methods
+-(void)showUnavailableAlertForServiceType:(NSString *)serviceType
+{
+    NSString *serviceName = @"";
+    
+    if (serviceType == SLServiceTypeFacebook) {
+        serviceName = @"Facebook";
+    }
+    else if (serviceType == SLServiceTypeSinaWeibo)
+    {
+        serviceName = @"Sina Weibo";
+    }
+    else if (serviceType == SLServiceTypeTwitter)
+    {
+        serviceName = @"Twitter";
+    }
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Account" message:[NSString stringWithFormat:@"Please Go to the device settings and add a %@ account in order to share through that service", serviceName] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
+    [alertView show];
 }
 
 #pragma mark-Shake

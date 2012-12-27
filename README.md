@@ -3,10 +3,35 @@
 Social Frameworks tutorial from RayWenderlich.com - with many learnings. Going to resuse this in Bento Rock. Thank you teachers!
 
 
-# Branch 2 - From Action to Activity 
+# Branch 3 - Button Up and Get Social
 
 Start - p 770
-Display a new UIActivity View Controller when the user taps the action button.
+Add Social Framework Into Your Project.
+
+
+# Branch 3
+
+Imported Social Framework. Since this is a library I'm not going to be making changes to, I can import them inside the precompiled headers file
+FunFacts-Mine-Prefix.pch 
+
+
+                #ifdef __OBJC__
+                    #import <UIKit/UIKit.h>
+                    #import <Foundation/Foundation.h>
+                    #import <Social/Social.h>
+                #endif
+
+Enumerator Declarations
+Remember that I added tags to the social networking buttons
+
+                // add an enumerator declaration
+                // enumerator is used so you can easily check for tags of the buttons without having to use numbers that may not make much sense or provide clarity as to which button you're working with
+                typedef enum SocialButtonTags
+                {
+                    SocialButtonTagFacebook,
+                    SocialButtonTagSinaWeibo,
+                    SocialButtonTagTwitter
+                } SocialButtonTags;
 
 # Branch 1- Basic User Interface
 
