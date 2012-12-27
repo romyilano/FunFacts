@@ -21,6 +21,9 @@
 // class extension
 // reference to the FactsList, which is a plist that's structured as an array
 @property (strong, nonatomic) NSArray *authorsArray;
+// setting a boolean so we can tell if the device was shaken or not
+// this will help prevent getting the default text to show up on the social posting 
+@property (assign, nonatomic) BOOL deviceWasShaken;
 
 @end
 
@@ -67,8 +70,29 @@
 #pragma mark-Actions
 -(IBAction)actionTapped
 {
-    
-}
+    if (self.deviceWasShaken) {
+        NSString *initialTextString = [NSString stringWithFormat:@"Fun Fact: %@", self.factTextView.text];
+        
+        // cool! so we can set up the author and then the text from their posting
+        UIActivityViewController *activityViewController = [[UIActivityViewController alloc]
+                                                            initWithActivityItems:@[self.authorImageView.image, initialTextString] applicationActivities:nil];
+        
+        
+        
+        // brings up the activity sheet which may be different depending on the user.
+        //  some people might just have mail, facebook, copy
+        
+        [self presentViewController:activityViewController animated:YES completion:nil];
+
+        
+    } else {
+        // if the user hasn't shaken the device, then present an error
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Shake"
+                                                            message:@"Before you can share, please shake the device in order to get a random Fun Fact" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
+        
+        [alertView show];
+    }
+   }
 
 -(IBAction)socialTapped:(id)sender
 {
@@ -82,6 +106,10 @@
 -(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
     if(motion==UIEventSubtypeMotionShake) {
+        
+        
+        self.deviceWasShaken=YES;
+        
         // 1 - choose a random author
         NSUInteger authorRandSize = self.authorsArray.count;
         NSUInteger authorRandomIndex =  (arc4random() % ((unsigned) authorRandSize));

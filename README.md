@@ -3,8 +3,12 @@
 Social Frameworks tutorial from RayWenderlich.com - with many learnings. Going to resuse this in Bento Rock. Thank you teachers!
 
 
+# Branch 2 - From Action to Activity 
 
-# Notes
+Start - p 770
+Display a new UIActivity View Controller when the user taps the action button.
+
+# Branch 1- Basic User Interface
 
 ## Shaking (from UIResponder)
 In order for the view controller to detect motions + gestures, it needs to tell teh app that it can become the first responder, and then actually become the first responder when it enters the foreground.
