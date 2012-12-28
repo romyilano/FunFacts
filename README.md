@@ -3,10 +3,19 @@
 Social Frameworks tutorial from RayWenderlich.com - with many learnings. Going to resuse this in Bento Rock. Thank you teachers!
 
 
-# Branch 3 - Button Up and Get Social
+# Branch 4 - Creating a Custom Activity
 
-Start - p 770
-Add Social Framework Into Your Project.
+p 778
+Note: You can only add a custom activity to activity views inside your own app. There is currently no way to register your own activity that can be called on other apps.
+
+Here we will make a custom activity that allows the user to save a fun fact to the Photos library!
+
+To Create a custom activity you need to subclass UIActivity (FunActivity)
+
+This is really nice
+
+* Use in BentoRock : I want to use this to create vegetable trading cards. It's nice! Pieces together the text, etc. into 
+* Possibly just redoing the entire share social button so that the kids can save the image and or tweet from the same button?
 
 
 # Branch 3

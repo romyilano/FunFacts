@@ -7,6 +7,7 @@
 //
 
 #import "SocialViewController.h"
+#import "FunActivity.h"
 
 // define keys for the dictionary from the plist
 #define AuthorFactsKey      @"facts"
@@ -78,31 +79,26 @@ typedef enum SocialButtonTags
 
 
 #pragma mark-Actions
+// now actionTapped: creates an instance of FunActivity and passes it to initWithActivityItems:applicationActivities: as a parameter
+// this saves the activity as an image to your photo album
 -(IBAction)actionTapped
 {
-    if (self.deviceWasShaken) {
+
+    if (self.deviceWasShaken)
+    {
+        FunActivity *funActivity = [[FunActivity alloc] init];
+        
         NSString *initialTextString = [NSString stringWithFormat:@"Fun Fact: %@", self.factTextView.text];
         
-        // cool! so we can set up the author and then the text from their posting
         UIActivityViewController *activityViewController = [[UIActivityViewController alloc]
-                                                            initWithActivityItems:@[self.authorImageView.image, initialTextString] applicationActivities:nil];
-        
-        
-        
-        // brings up the activity sheet which may be different depending on the user.
-        //  some people might just have mail, facebook, copy
+                                                            initWithActivityItems:@[self.authorImageView.image, initialTextString] applicationActivities:@[funActivity]];
         
         [self presentViewController:activityViewController animated:YES completion:nil];
-
-        
-    } else {
-        // if the user hasn't shaken the device, then present an error
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Shake"
-                                                            message:@"Before you can share, please shake the device in order to get a random Fun Fact" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
-        
-        [alertView show];
+    } else
+    {
+        //
     }
-   }
+}
 
 -(IBAction)socialTapped:(id)sender
 {

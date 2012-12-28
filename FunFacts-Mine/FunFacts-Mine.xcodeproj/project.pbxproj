@@ -48,6 +48,7 @@
 		9E4D4169168CFBD000B08D42 /* icon_twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E4D4144168CFBD000B08D42 /* icon_twitter@2x.png */; };
 		9E4D416B168CFFFE00B08D42 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9E4D416A168CFFFE00B08D42 /* README.md */; };
 		9E4D416D168D094F00B08D42 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E4D416C168D094F00B08D42 /* Social.framework */; };
+		9E4D4170168D109F00B08D42 /* FunActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4D416F168D109F00B08D42 /* FunActivity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,8 @@
 		9E4D4144168CFBD000B08D42 /* icon_twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_twitter@2x.png"; sourceTree = "<group>"; };
 		9E4D416A168CFFFE00B08D42 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		9E4D416C168D094F00B08D42 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		9E4D416E168D109E00B08D42 /* FunActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunActivity.h; sourceTree = "<group>"; };
+		9E4D416F168D109F00B08D42 /* FunActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunActivity.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +154,8 @@
 				9E4D4112168CF64000B08D42 /* MainStoryboard.storyboard */,
 				9E4D4115168CF64000B08D42 /* SocialViewController.h */,
 				9E4D4116168CF64000B08D42 /* SocialViewController.m */,
+				9E4D416E168D109E00B08D42 /* FunActivity.h */,
+				9E4D416F168D109F00B08D42 /* FunActivity.m */,
 				9E4D411D168CFBC400B08D42 /* Resources */,
 				9E4D4101168CF64000B08D42 /* Supporting Files */,
 			);
@@ -320,6 +325,7 @@
 				9E4D4107168CF64000B08D42 /* main.m in Sources */,
 				9E4D410B168CF64000B08D42 /* AppDelegate.m in Sources */,
 				9E4D4117168CF64000B08D42 /* SocialViewController.m in Sources */,
+				9E4D4170168D109F00B08D42 /* FunActivity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
