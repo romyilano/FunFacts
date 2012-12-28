@@ -10,8 +10,9 @@ Note: You can only add a custom activity to activity views inside your own app. 
 
 Here we will make a custom activity that allows the user to save a fun fact to the Photos library!
 
-To Create a custom activity you need to subclass UIActivity (FunActivity)
+* To Create a custom activity you need to subclass UIActivity (FunActivity)
 
+## Uses 
 This is really nice
 
 * Use in BentoRock : I want to use this to create vegetable trading cards. It's nice! Pieces together the text, etc. into 
